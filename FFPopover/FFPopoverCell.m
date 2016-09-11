@@ -7,20 +7,19 @@
 //
 
 #import "FFPopoverCell.h"
+#import "FFPopoverAction.h"
 
-# define margin 5
+# define margin 10
+
+
+@interface FFPopoverCell ()
+@property (nonatomic, weak) UIImageView *iconView;
+@property (nonatomic, weak) UILabel *titleView;
+@end
+
+
+
 @implementation FFPopoverCell
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 + (instancetype)cellWithTableView:(UITableView *)tableView
 {
@@ -38,28 +37,55 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
+    
+        UIImageView *iconView = [[UIImageView alloc] init];
+        [self.contentView addSubview:iconView];
+        self.iconView = iconView;
+        
+        
+        UILabel *titleView = [[UILabel alloc] init];
+        titleView.font = [UIFont systemFontOfSize:15.0];
+        [self.contentView addSubview:titleView];
+        self.titleView = titleView;
+        
+        // 取消cell的选中
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        
     }
     return self;
 }
 
 
 
+- (void)setAction:(FFPopoverAction *)action {
+       _action = action;
+    
+    self.iconView.image = action.image;
+    self.titleView.text = action.title;
+
+}
+
+
+
 - (void)layoutSubviews {
     [super layoutSubviews];
-    // imageView尺寸
-    CGRect imageViewFrame =  self.imageView.frame;
-    imageViewFrame.origin.x = margin;
-    imageViewFrame.origin.y = margin;
-    imageViewFrame.size.height = self.bounds.size.height - 2 * margin;
-    imageViewFrame.size.width = imageViewFrame.size.height;
-    self.imageView.frame = imageViewFrame;
     
-    // textLabel尺寸
-    CGRect textLabelFrame = self.textLabel.frame;
-    textLabelFrame.origin.x = CGRectGetMaxX(self.imageView.frame) + margin;
-    textLabelFrame.size.width = (self.bounds.size.width - 3 * margin - imageViewFrame.size.width);
-    self.textLabel.frame = textLabelFrame;
+    
+    CGFloat iconViewX = margin;
+    CGFloat iconViewY = margin;
+    CGFloat iconViewH = self.bounds.size.height - 2 * margin;
+    CGFloat iconViewW = iconViewH;
+    self.iconView.frame = CGRectMake(iconViewX, iconViewY, iconViewW, iconViewH);
+    
+    
+    CGFloat titleViewX = CGRectGetMaxX(self.iconView.frame) + margin;
+    CGFloat titleViewY = 0;
+    CGFloat titleViewH = self.bounds.size.height;
+    CGFloat titleViewW = self.bounds.size.width - 3 * margin - iconViewW;
+    self.titleView.frame = CGRectMake(titleViewX, titleViewY, titleViewW, titleViewH);
+    
+    
 }
 
 

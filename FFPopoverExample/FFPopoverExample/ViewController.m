@@ -20,11 +20,11 @@
     
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
-    popover.contentColor = [UIColor blueColor];
-    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"扫一扫" image:nil handler:^() {
+//    popover.contentBackgroundColor = [UIColor blueColor];
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"搜一搜" image:[UIImage imageNamed:@"search"] handler:^() {
         
     }] ];
-    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"看一看" image:nil handler:^() {
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"看一看" image:[UIImage imageNamed:@"QRCode"] handler:^() {
         
     }] ];
     
@@ -37,7 +37,7 @@
 - (IBAction)rightTextClicked:(UITapGestureRecognizer *)sender {
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
-    popover.contentColor = [UIColor blueColor];
+    popover.contentBackgroundColor = [UIColor blueColor];
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"哈一哈" image:nil handler:^() {
         
     }] ];

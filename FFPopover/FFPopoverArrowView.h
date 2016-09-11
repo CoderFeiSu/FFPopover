@@ -10,7 +10,6 @@
 typedef NS_ENUM (NSInteger, FFPopoverArrowViewType) {
      FFPopoverArrowViewTypeRegular, // 正三角
      FFPopoverArrowViewTypeDel // 倒三角
-
 };
 
 

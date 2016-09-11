@@ -9,7 +9,6 @@
 
 #import "FFPopoverController.h"
 
-# define contentWidth 140
 # define kArrowW 15 // 箭头宽度
 # define kArrowH 8 // 箭头高度
 # define cellRowHeight 45
@@ -42,9 +41,23 @@
             UIWindow *window = [UIApplication sharedApplication].keyWindow;
             self.fromViewRect = [fromView.superview convertRect:fromView.frame toView:window];
         }
+        
+        
+        // 3.设置初始值
+        self.contentBackgroundColor = [UIColor whiteColor];
+        self.separatorLineColor = [UIColor lightGrayColor];
+        self.alpha = 0.0;
+        self.contentWidth = 140.0;
+        
+        
     }
     
     return self;
+}
+
+
+- (void)addAction:(FFPopoverAction *)action {
+    [self.actions addObject:action];
 }
 
 
@@ -60,16 +73,14 @@
     CGFloat arrowViewH = kArrowH;
     CGFloat arrowViewX = CGRectGetMaxX(self.fromViewRect) - (self.fromViewRect.size.width + arrowViewW) * 0.5; // 箭头始终与fromView的中心点对齐
     CGFloat arrowViewY = CGRectGetMaxY(self.fromViewRect);
-//    if (CGRectGetMaxY(self.fromViewRect) > viewSize.height * 0.5) {
-//        arrowViewY = self.fromViewRect.origin.y - arrowViewH;
-//    }
+
     
     self.arrowView.frame = CGRectMake(arrowViewX, arrowViewY, arrowViewW, arrowViewH);
     
     
     // 1.1 设置内容的Frame
     CGFloat contentViewH = self.actions.count * cellRowHeight;
-    CGFloat contentViewW = contentWidth;
+    CGFloat contentViewW = self.contentWidth;
     CGFloat contentViewY = CGRectGetMaxY(self.arrowView.frame);
     CGFloat contentViewX = self.arrowView.frame.origin.x - (contentViewW - self.arrowView.frame.size.width) * 0.5; // 默认设置内容中心点跟箭头中心点对齐
     
@@ -88,25 +99,13 @@
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:self.alpha];
     
     // 3.分割线颜色
-   if (self.separatorLineColor) self.contentView.backgroundColor = self.separatorLineColor;
+    self.contentView.backgroundColor = self.separatorLineColor;
     
     // 4.箭头的填充颜色
-    self.arrowView.fillColor = self.contentColor;
+    self.arrowView.fillColor = self.contentBackgroundColor;
   
-  
+
 }
-
-
-
-
-
-
-
-
-- (void)addAction:(FFPopoverAction *)action {
-    [self.actions addObject:action];
-}
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
@@ -120,18 +119,13 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     FFPopoverCell  *cell = [FFPopoverCell cellWithTableView:tableView];
     FFPopoverAction *action = self.actions[indexPath.row];
-    cell.textLabel.text = action.title;
-    cell.textLabel.textColor = action.titleColor;
-    cell.imageView.image = action.image;
-    cell.textLabel.font = [UIFont systemFontOfSize:15.0];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (!self.contentColor) {
-        cell.backgroundColor = [UIColor whiteColor];
-    } else {
-        cell.backgroundColor = self.contentColor;
-    }
+    cell.action = action;
+    
+    cell.backgroundColor = self.contentBackgroundColor;
+ 
     return cell;
 
 }
@@ -162,16 +156,11 @@
         contentView.dataSource = self;
         contentView.rowHeight = cellRowHeight;
         contentView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        contentView.backgroundColor = [UIColor groupTableViewBackgroundColor]; // 看到的分割线颜色
         contentView.separatorStyle = UITableViewCellSeparatorStyleNone; // 去除原来的分割线
         contentView.showsVerticalScrollIndicator = NO;
         contentView.scrollEnabled  = NO;
         contentView.layer.cornerRadius  = 5.f;
-        if (!self.contentColor) {
-            contentView.layer.borderColor   = [UIColor whiteColor].CGColor;
-        } else {
-            contentView.layer.borderColor   = self.contentColor.CGColor;
-        }
+        contentView.layer.borderColor   = self.contentBackgroundColor.CGColor;
         contentView.layer.borderWidth   = 1.f;
         [self.view addSubview:contentView];
         _contentView = contentView;
