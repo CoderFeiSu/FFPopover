@@ -15,6 +15,10 @@
 		77A7FAD51D851E74005430D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77A7FAD31D851E74005430D8 /* LaunchScreen.storyboard */; };
 		77A7FAE01D851E74005430D8 /* FFPopoverExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FADF1D851E74005430D8 /* FFPopoverExampleTests.m */; };
 		77A7FAEB1D851E74005430D8 /* FFPopoverExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FAEA1D851E74005430D8 /* FFPopoverExampleUITests.m */; };
+		77A7FB041D851F1B005430D8 /* FFPopoverAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FAFB1D851F1B005430D8 /* FFPopoverAction.m */; };
+		77A7FB051D851F1B005430D8 /* FFPopoverArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FAFD1D851F1B005430D8 /* FFPopoverArrowView.m */; };
+		77A7FB061D851F1B005430D8 /* FFPopoverCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FAFF1D851F1B005430D8 /* FFPopoverCell.m */; };
+		77A7FB081D851F1B005430D8 /* FFPopoverController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FB031D851F1B005430D8 /* FFPopoverController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,15 @@
 		77A7FAE61D851E74005430D8 /* FFPopoverExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFPopoverExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A7FAEA1D851E74005430D8 /* FFPopoverExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FFPopoverExampleUITests.m; sourceTree = "<group>"; };
 		77A7FAEC1D851E74005430D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77A7FAF91D851F1B005430D8 /* FFPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPopover.h; sourceTree = "<group>"; };
+		77A7FAFA1D851F1B005430D8 /* FFPopoverAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPopoverAction.h; sourceTree = "<group>"; };
+		77A7FAFB1D851F1B005430D8 /* FFPopoverAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPopoverAction.m; sourceTree = "<group>"; };
+		77A7FAFC1D851F1B005430D8 /* FFPopoverArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPopoverArrowView.h; sourceTree = "<group>"; };
+		77A7FAFD1D851F1B005430D8 /* FFPopoverArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPopoverArrowView.m; sourceTree = "<group>"; };
+		77A7FAFE1D851F1B005430D8 /* FFPopoverCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPopoverCell.h; sourceTree = "<group>"; };
+		77A7FAFF1D851F1B005430D8 /* FFPopoverCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPopoverCell.m; sourceTree = "<group>"; };
+		77A7FB021D851F1B005430D8 /* FFPopoverController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPopoverController.h; sourceTree = "<group>"; };
+		77A7FB031D851F1B005430D8 /* FFPopoverController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPopoverController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +114,7 @@
 		77A7FAC41D851E73005430D8 /* FFPopoverExample */ = {
 			isa = PBXGroup;
 			children = (
+				77A7FAF81D851F1B005430D8 /* FFPopover */,
 				77A7FAC81D851E74005430D8 /* AppDelegate.h */,
 				77A7FAC91D851E74005430D8 /* AppDelegate.m */,
 				77A7FACB1D851E74005430D8 /* ViewController.h */,
@@ -138,6 +152,23 @@
 				77A7FAEC1D851E74005430D8 /* Info.plist */,
 			);
 			path = FFPopoverExampleUITests;
+			sourceTree = "<group>";
+		};
+		77A7FAF81D851F1B005430D8 /* FFPopover */ = {
+			isa = PBXGroup;
+			children = (
+				77A7FAF91D851F1B005430D8 /* FFPopover.h */,
+				77A7FAFA1D851F1B005430D8 /* FFPopoverAction.h */,
+				77A7FAFB1D851F1B005430D8 /* FFPopoverAction.m */,
+				77A7FAFC1D851F1B005430D8 /* FFPopoverArrowView.h */,
+				77A7FAFD1D851F1B005430D8 /* FFPopoverArrowView.m */,
+				77A7FAFE1D851F1B005430D8 /* FFPopoverCell.h */,
+				77A7FAFF1D851F1B005430D8 /* FFPopoverCell.m */,
+				77A7FB021D851F1B005430D8 /* FFPopoverController.h */,
+				77A7FB031D851F1B005430D8 /* FFPopoverController.m */,
+			);
+			name = FFPopover;
+			path = ../../FFPopover;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,9 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A7FB051D851F1B005430D8 /* FFPopoverArrowView.m in Sources */,
 				77A7FACD1D851E74005430D8 /* ViewController.m in Sources */,
+				77A7FB081D851F1B005430D8 /* FFPopoverController.m in Sources */,
+				77A7FB041D851F1B005430D8 /* FFPopoverAction.m in Sources */,
 				77A7FACA1D851E74005430D8 /* AppDelegate.m in Sources */,
 				77A7FAC71D851E74005430D8 /* main.m in Sources */,
+				77A7FB061D851F1B005430D8 /* FFPopoverCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

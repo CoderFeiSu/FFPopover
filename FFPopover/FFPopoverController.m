@@ -9,11 +9,10 @@
 
 #import "FFPopoverController.h"
 
-# define contentWidth 100
-# define UIFontTitleSize [UIFont systemFontOfSize:13.0]
+# define contentWidth 140
 # define kArrowW 15 // 箭头宽度
 # define kArrowH 8 // 箭头高度
-# define cellRowHeight 30
+# define cellRowHeight 45
 
 
 @interface FFPopoverController () <UITableViewDelegate, UITableViewDataSource>
@@ -126,7 +125,7 @@
     cell.textLabel.text = action.title;
     cell.textLabel.textColor = action.titleColor;
     cell.imageView.image = action.image;
-    cell.textLabel.font = UIFontTitleSize;
+    cell.textLabel.font = [UIFont systemFontOfSize:15.0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if (!self.contentColor) {
         cell.backgroundColor = [UIColor whiteColor];
