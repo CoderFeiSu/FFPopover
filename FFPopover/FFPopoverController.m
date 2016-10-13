@@ -144,9 +144,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self dismissViewControllerAnimated:YES completion:nil];
     FFPopoverAction *action = self.actions[indexPath.row];
-   if (action.handler)  action.handler();
+    action.selected = !action.selected;
+   if (action.handler)  action.handler(action);
+    [self.contentView reloadData];
 }
 
 
@@ -189,7 +190,6 @@
     }
     return _actions;
 }
-
 
 @end
 

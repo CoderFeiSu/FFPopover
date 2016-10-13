@@ -14,7 +14,7 @@
 
 
 @implementation FFPopoverAction
-- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image handler:(void (^)())handler {
+- (instancetype)initWithTitle:(NSString *)title image:(UIImage *)image handler:(nonnull void (^)(FFPopoverAction * _Nonnull))handler {
     self = [super init];
     if (self) {
         _title = title;
@@ -23,4 +23,6 @@
     }
     return self;
 }
+
+
 @end

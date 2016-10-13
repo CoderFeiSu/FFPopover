@@ -12,14 +12,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface FFPopoverAction : NSObject
-- (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image handler:(void (^)())handler;
+- (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image handler:(void (^)(FFPopoverAction *))handler;
 /** 文字的颜色，默认是黑色*/
 @property (nullable, nonatomic, strong) UIColor *titleColor;
 /** 文字的大小，默认是15.0*/
 @property (nullable, nonatomic, strong) UIFont *titleFont;
-@property (nonatomic, copy, readonly) NSString *title;
-@property (nullable, nonatomic, strong, readonly) UIImage *image;
-@property (nonatomic, copy) void (^handler)();
+@property (nonatomic, copy) NSString *title;
+@property (nullable, nonatomic, strong) UIImage *image;
+@property (nonatomic, assign) BOOL selected;
+@property (nonatomic, copy) void (^handler)(FFPopoverAction *action);
 @end
 
 
