@@ -22,6 +22,8 @@
 @property (nonatomic, strong) NSMutableArray <FFPopoverAction *> *actions;
 
 @property (nonatomic, assign) CGRect fromViewRect;
+/** 菜单向下 */
+@property (nonatomic, assign) BOOL isDropDown;
 @end
 
 
@@ -72,16 +74,13 @@
     CGFloat arrowViewW = kArrowW;
     CGFloat arrowViewH = kArrowH;
     CGFloat arrowViewX = CGRectGetMaxX(self.fromViewRect) - (self.fromViewRect.size.width + arrowViewW) * 0.5; // 箭头始终与fromView的中心点对齐
-    CGFloat arrowViewY = CGRectGetMaxY(self.fromViewRect);
-
-    
+    CGFloat arrowViewY = self.isDropDown ? CGRectGetMaxY(self.fromViewRect) : self.fromViewRect.origin.y - arrowViewH ;
     self.arrowView.frame = CGRectMake(arrowViewX, arrowViewY, arrowViewW, arrowViewH);
-    
     
     // 1.1 设置内容的Frame
     CGFloat contentViewH = self.actions.count * cellRowHeight;
     CGFloat contentViewW = self.contentWidth;
-    CGFloat contentViewY = CGRectGetMaxY(self.arrowView.frame);
+    CGFloat contentViewY = self.isDropDown ? CGRectGetMaxY(self.arrowView.frame) : arrowViewY - contentViewH;
     CGFloat contentViewX = self.arrowView.frame.origin.x - (contentViewW - self.arrowView.frame.size.width) * 0.5; // 默认设置内容中心点跟箭头中心点对齐
     
     // 1.2 设置内容的X
@@ -106,6 +105,20 @@
   
 
 }
+
+
+
+
+- (BOOL)isDropDown {
+    CGFloat fromViewMaxY = CGRectGetMaxY(self.fromViewRect);
+    if (fromViewMaxY + kArrowH + self.actions.count * cellRowHeight + 5 <= self.view.frame.size.height) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
@@ -141,6 +154,7 @@
 - (FFPopoverArrowView *)arrowView {
     if (_arrowView ==  nil) {
         FFPopoverArrowView *arrowView = [[FFPopoverArrowView alloc] init];
+        arrowView.type = self.isDropDown ? FFPopoverArrowViewTypeRegular : FFPopoverArrowViewTypeDel;
         [self.view addSubview:arrowView];
         _arrowView = arrowView;
     }

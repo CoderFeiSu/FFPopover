@@ -457,6 +457,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.feifei.www.FFPopoverExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -468,6 +469,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.feifei.www.FFPopoverExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -536,6 +538,7 @@
 				77A7FAF11D851E74005430D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77A7FAF21D851E74005430D8 /* Build configuration list for PBXNativeTarget "FFPopoverExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +547,7 @@
 				77A7FAF41D851E74005430D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77A7FAF51D851E74005430D8 /* Build configuration list for PBXNativeTarget "FFPopoverExampleUITests" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +556,7 @@
 				77A7FAF71D851E74005430D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
