@@ -20,9 +20,15 @@
     
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
+    popover.dismissCompletion = ^ {
+       NSLog(@"销毁了");
+    };
+    popover.presentCompletion = ^ {
+       NSLog(@"展现了");
+    };
 //    popover.contentBackgroundColor = [UIColor blueColor];
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"搜一搜" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-        action.title = action.selected ? @"搜一搜2" : @"搜一搜";
+       
     }] ];
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"看一看" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
          action.title = @"看一看2";

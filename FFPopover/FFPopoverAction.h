@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, strong) UIFont *titleFont;
 @property (nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, strong) UIImage *image;
-@property (nonatomic, assign) BOOL selected;
 @property (nonatomic, copy) void (^handler)(FFPopoverAction *action);
 @end
 

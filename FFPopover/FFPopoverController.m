@@ -119,11 +119,22 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.presentCompletion) self.presentCompletion();
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.dismissCompletion) self.dismissCompletion();
+}
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark - UITableViewDelegate
 
@@ -145,7 +156,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FFPopoverAction *action = self.actions[indexPath.row];
-    action.selected = !action.selected;
    if (action.handler)  action.handler(action);
     [self.contentView reloadData];
 }
