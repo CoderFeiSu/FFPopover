@@ -28,9 +28,9 @@
     [popover addAction:action2];
     [popover addAction:action3];
     
-    [self presentViewController:popover animated:YES completion:nil];
-    
-}```
+    [self presentViewController:popover animated:YES completion:nil];  
+}
+```
 
 ## 支持版本
-iOS7及以上
+* iOS7及以上
