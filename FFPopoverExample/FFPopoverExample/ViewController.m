@@ -60,9 +60,9 @@
 
 
 
-- (IBAction)leftDownBtnClicked:(id)sender {
+- (IBAction)leftDownBtnClicked:(UIButton *)btn {
     
-    FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender];
+    FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:btn];
     
     FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
         NSLog(@"我是%@",action.title);
