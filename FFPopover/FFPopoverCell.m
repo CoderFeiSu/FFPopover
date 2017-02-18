@@ -21,8 +21,7 @@
 
 @implementation FFPopoverCell
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView
-{
++ (instancetype)cellWithTableView:(UITableView *)tableView {
     static NSString *ID = @"popoverCell";
     FFPopoverCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
@@ -42,7 +41,7 @@
         self.layer.shouldRasterize = YES;
         self.layer.rasterizationScale = [UIScreen mainScreen].scale;
         
-        // 2.异步绘制
+        // 2.异步绘制(离屏渲染)
         self.layer.drawsAsynchronously = YES;
         
         // 3.图片

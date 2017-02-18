@@ -64,15 +64,15 @@
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:btn];
     
-    FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
+    FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
         NSLog(@"我是%@",action.title);
     }];
     
-    FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
+    FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
         NSLog(@"我是%@",action.title);
     }];
     
-    FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
+    FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
         NSLog(@"我是%@",action.title);
     }];
     
