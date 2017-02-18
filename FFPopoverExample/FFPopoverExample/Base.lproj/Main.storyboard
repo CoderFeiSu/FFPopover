@@ -35,6 +35,14 @@
                                     <action selector="leftDownBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RXy-ks-AW6"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wn9-UJ-oNN">
+                                <rect key="frame" x="136" y="338" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="我是中间"/>
+                                <connections>
+                                    <action selector="middleBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fJT-VA-xgd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                     </view>
@@ -55,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="933" y="255"/>
+            <point key="canvasLocation" x="932" y="254.12293853073464"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WNE-Rx-aIs">

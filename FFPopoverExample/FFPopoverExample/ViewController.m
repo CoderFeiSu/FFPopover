@@ -15,7 +15,7 @@
 
 @implementation ViewController
 
-// 右边加号点击
+// 右上边加号点击
 - (IBAction)rightPlusClicked:(UITapGestureRecognizer *)sender {
     
     
@@ -43,7 +43,7 @@
 
 
 
-// 右边text点击
+// 右上边text点击
 - (IBAction)rightTextClicked:(UITapGestureRecognizer *)sender {
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
@@ -82,6 +82,31 @@
     
     [self presentViewController:popover animated:YES completion:nil];
     
+}
+
+
+// 中间按钮点击
+- (IBAction)middleBtnClicked:(UIButton *)btn {
+    
+    FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:btn];
+    
+    FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
+        action.title = @"我变1";
+    }];
+    
+    FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
+        action.title = @"我变2";
+    }];
+    
+    FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
+        action.title = @"我变3";
+    }];
+    
+    [popover addAction:action1];
+    [popover addAction:action2];
+    [popover addAction:action3];
+    
+    [self presentViewController:popover animated:YES completion:nil];
 }
 
 
