@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @interface FFPopoverAction : NSObject
+
 - (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image handler:(void (^)(FFPopoverAction *))handler;
 /** 文字的颜色，默认是黑色*/
 @property (nullable, nonatomic, strong) UIColor *titleColor;

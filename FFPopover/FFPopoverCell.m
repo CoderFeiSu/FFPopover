@@ -38,11 +38,19 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
     
+        // 1.栅格化
+        self.layer.shouldRasterize = YES;
+        self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+        
+        // 2.异步绘制
+        self.layer.drawsAsynchronously = YES;
+        
+        // 3.图片
         UIImageView *iconView = [[UIImageView alloc] init];
         [self.contentView addSubview:iconView];
         self.iconView = iconView;
         
-        
+        // 文字
         UILabel *titleView = [[UILabel alloc] init];
         titleView.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:titleView];

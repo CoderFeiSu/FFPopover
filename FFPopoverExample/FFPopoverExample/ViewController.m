@@ -39,11 +39,11 @@
     }] ];
     
     [self presentViewController:popover animated:YES completion:nil];
-    
-
 }
 
 
+
+// 右边text点击
 - (IBAction)rightTextClicked:(UITapGestureRecognizer *)sender {
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
@@ -53,11 +53,36 @@
     }] ];
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"看一看" image:nil handler:^(FFPopoverAction *action) {
         
-    }] ];
+    }]];
     
     [self presentViewController:popover animated:YES completion:nil];
 }
 
+
+
+- (IBAction)leftDownBtnClicked:(id)sender {
+    
+    FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender];
+    
+    FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
+        NSLog(@"我是%@",action.title);
+    }];
+    
+    FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
+        NSLog(@"我是%@",action.title);
+    }];
+    
+    FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@""] handler:^(FFPopoverAction *action) {
+        NSLog(@"我是%@",action.title);
+    }];
+    
+    [popover addAction:action1];
+    [popover addAction:action2];
+    [popover addAction:action3];
+    
+    [self presentViewController:popover animated:YES completion:nil];
+    
+}
 
 
 - (void)viewDidLoad {

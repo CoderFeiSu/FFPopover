@@ -63,7 +63,7 @@
 }
 
 
-
+#pragma mark - 视图周期
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
@@ -77,13 +77,13 @@
     CGFloat arrowViewY = self.isDropDown ? CGRectGetMaxY(self.fromViewRect) : self.fromViewRect.origin.y - arrowViewH ;
     self.arrowView.frame = CGRectMake(arrowViewX, arrowViewY, arrowViewW, arrowViewH);
     
-    // 1.1 设置内容的Frame
+    // 3.1 设置内容的Frame
     CGFloat contentViewH = self.actions.count * cellRowHeight;
     CGFloat contentViewW = self.contentWidth;
     CGFloat contentViewY = self.isDropDown ? CGRectGetMaxY(self.arrowView.frame) : arrowViewY - contentViewH;
     CGFloat contentViewX = self.arrowView.frame.origin.x - (contentViewW - self.arrowView.frame.size.width) * 0.5; // 默认设置内容中心点跟箭头中心点对齐
     
-    // 1.2 设置内容的X
+    // 3.2 设置内容的X
     if (viewSize.width - self.arrowView.center.x - 5  < contentViewW * 0.5) {
         contentViewX = contentViewX - (contentViewW / 2 - (viewSize.width - self.arrowView.center.x - 5));
     }
@@ -92,31 +92,17 @@
     }
     self.contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
 
-    
-    
-    // 2.设置背景透明度
+    // 4.设置背景透明度
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:self.alpha];
     
-    // 3.分割线颜色
+    // 5.分割线颜色
     self.contentView.backgroundColor = self.separatorLineColor;
     
-    // 4.箭头的填充颜色
+    // 6.箭头的填充颜色
     self.arrowView.fillColor = self.contentBackgroundColor;
-  
-
+    
 }
 
-
-
-
-- (BOOL)isDropDown {
-    CGFloat fromViewMaxY = CGRectGetMaxY(self.fromViewRect);
-    if (fromViewMaxY + kArrowH + self.actions.count * cellRowHeight + 5 <= self.view.frame.size.height) {
-        return YES;
-    } else {
-        return NO;
-    }
-}
 
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -129,6 +115,7 @@
     [super viewWillDisappear:animated];
     if (self.dismissCompletion) self.dismissCompletion();
 }
+
 
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -172,6 +159,15 @@
     return _arrowView;
 }
 
+
+- (BOOL)isDropDown {
+    CGFloat fromViewMaxY = CGRectGetMaxY(self.fromViewRect);
+    if (fromViewMaxY + kArrowH + self.actions.count * cellRowHeight + 5 <= self.view.frame.size.height) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 
 - (UITableView *)contentView {

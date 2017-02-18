@@ -27,9 +27,9 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface FFPopoverController : UIViewController
 @property (nonatomic, strong)  UIColor *contentBackgroundColor;
 /** 内容尺寸，默认宽度是140 */
 @property (nonatomic, assign)  CGFloat contentWidth;
-/** 控制器销毁 */
+/** 控制器将会销毁 */
 @property (nonatomic, copy) void (^dismissCompletion)();
-/** 控制器完全显示 */
+/** 控制器将会显示 */
 @property (nonatomic, copy) void (^presentCompletion)();
 @end
 
