@@ -11,7 +11,8 @@
 
 # define kArrowW 15 // 箭头宽度
 # define kArrowH 8 // 箭头高度
-# define cellRowHeight 45
+# define kCellRowHeight 45
+# define kContent2Border 5 // 内容边框到屏幕边框的间距
 
 
 @interface FFPopoverController () <UITableViewDelegate, UITableViewDataSource>
@@ -29,6 +30,9 @@
 
 @implementation FFPopoverController
 
+ static NSString * const popoverID = @"popoverCell";
+
+# pragma mark - 重要方法
 - (instancetype)initWithFromView:(UIView *)fromView {
     self = [super init];
     if (self) {
@@ -50,8 +54,6 @@
         self.separatorLineColor = [UIColor lightGrayColor];
         self.alpha = 0.0;
         self.contentWidth = 140.0;
-        
-        
     }
     
     return self;
@@ -64,6 +66,15 @@
 
 
 #pragma mark - 视图周期
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.contentView registerClass:[FFPopoverCell class] forCellReuseIdentifier:popoverID];
+}
+
+
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
@@ -78,17 +89,17 @@
     self.arrowView.frame = CGRectMake(arrowViewX, arrowViewY, arrowViewW, arrowViewH);
     
     // 3.1 设置内容的Frame
-    CGFloat contentViewH = self.actions.count * cellRowHeight;
+    CGFloat contentViewH = self.actions.count * kCellRowHeight;
     CGFloat contentViewW = self.contentWidth;
     CGFloat contentViewY = self.isDropDown ? CGRectGetMaxY(self.arrowView.frame) : arrowViewY - contentViewH;
-    CGFloat contentViewX = self.arrowView.frame.origin.x - (contentViewW - self.arrowView.frame.size.width) * 0.5; // 默认设置内容中心点跟箭头中心点对齐
+    CGFloat contentViewX = self.arrowView.frame.origin.x - (contentViewW - arrowViewW) * 0.5; // 默认设置内容中心点跟箭头中心点对齐
     
     // 3.2 设置内容的X
-    if (viewSize.width - self.arrowView.center.x - 5  < contentViewW * 0.5) {
-        contentViewX = contentViewX - (contentViewW / 2 - (viewSize.width - self.arrowView.center.x - 5));
+    if (viewSize.width - self.arrowView.center.x - kContent2Border  < contentViewW * 0.5) {
+        contentViewX = contentViewX - (contentViewW / 2 - (viewSize.width - self.arrowView.center.x - kContent2Border));
     }
-    if (self.arrowView.center.x + 5 < contentViewW * 0.5) {
-        contentViewX = contentViewX + (contentViewW / 2 - self.arrowView.center.x) + 5;
+    if (self.arrowView.center.x + kContent2Border < contentViewW * 0.5) {
+        contentViewX = contentViewX + (contentViewW / 2 - self.arrowView.center.x) + kContent2Border;
     }
     self.contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
 
@@ -123,7 +134,7 @@
 }
 
 
-#pragma mark - UITableViewDelegate
+#pragma mark - UITableView代理
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.actions.count;
@@ -131,19 +142,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    FFPopoverCell  *cell = [FFPopoverCell cellWithTableView:tableView];
+    FFPopoverCell *cell = (FFPopoverCell *)[tableView dequeueReusableCellWithIdentifier:popoverID forIndexPath:indexPath];
     FFPopoverAction *action = self.actions[indexPath.row];
     cell.action = action;
-    
     cell.backgroundColor = self.contentBackgroundColor;
  
     return cell;
-
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FFPopoverAction *action = self.actions[indexPath.row];
-   if (action.handler)  action.handler(action);
+    if (action.handler)  action.handler(action);
     [self.contentView reloadData];
 }
 
@@ -162,7 +172,7 @@
 
 - (BOOL)isDropDown {
     CGFloat fromViewMaxY = CGRectGetMaxY(self.fromViewRect);
-    if (fromViewMaxY + kArrowH + self.actions.count * cellRowHeight + 5 <= self.view.frame.size.height) {
+    if (fromViewMaxY + kArrowH + self.actions.count * kCellRowHeight + kContent2Border <= self.view.frame.size.height) {
         return YES;
     } else {
         return NO;
@@ -170,12 +180,13 @@
 }
 
 
+
 - (UITableView *)contentView {
     if (!_contentView) {
         UITableView *contentView = [[UITableView alloc] init];
         contentView.delegate = self;
         contentView.dataSource = self;
-        contentView.rowHeight = cellRowHeight;
+        contentView.rowHeight = kCellRowHeight;
         contentView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
         contentView.separatorStyle = UITableViewCellSeparatorStyleNone; // 去除原来的分割线
         contentView.showsVerticalScrollIndicator = NO;

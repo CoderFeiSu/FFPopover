@@ -14,6 +14,7 @@ typedef NS_ENUM (NSInteger, FFPopoverArrowViewType) {
 
 
 @interface FFPopoverArrowView : UIView
+/** 箭头的填充颜色, 默认是whiteColor*/
 @property (nonatomic, strong) UIColor *fillColor;
 @property (nonatomic, assign) FFPopoverArrowViewType type;
 @end

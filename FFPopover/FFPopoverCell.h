@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 @class FFPopoverAction;
 @interface FFPopoverCell : UITableViewCell
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
 @property (nonatomic, strong) FFPopoverAction *action;
 @end

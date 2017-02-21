@@ -17,23 +17,10 @@
 @property (nonatomic, weak) UILabel *titleView;
 @end
 
-
-
 @implementation FFPopoverCell
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView {
-    static NSString *ID = @"popoverCell";
-    FFPopoverCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if (cell == nil) {
-        cell = [[FFPopoverCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-    }
-    return cell;
-}
 
-
-
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
     
@@ -70,7 +57,7 @@
     
     self.iconView.image = action.image;
     self.titleView.text = action.title;
-
+    
 }
 
 
