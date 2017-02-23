@@ -8,27 +8,34 @@
 * 示例代码:
 
 ```objc
-- (IBAction)leftDownBtnClicked:(UIButton *)btn {
+// 右上边加号点击
+- (IBAction)rightPlusClicked:(UITapGestureRecognizer *)sender {
     
-    FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:btn];
     
-    FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
-        NSLog(@"我是%@",action.title);
-    }];
+    FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
+
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"搜一搜" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor redColor];
+        vc.title = @"我要搜索";
+        [self.navigationController pushViewController:vc animated:YES];
+    }]];
     
-    FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-        NSLog(@"我是%@",action.title);
-    }];
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"扫一扫" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor greenColor];
+        vc.title = @"我要扫描";
+        [self.navigationController pushViewController:vc animated:YES];
+    }]];
     
-    FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-        NSLog(@"我是%@",action.title);
-    }];
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"聊一聊" image:[UIImage imageNamed:@"chat"] handler:^(FFPopoverAction *action) {
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor blueColor];
+        vc.title = @"我要聊天";
+        [self.navigationController pushViewController:vc animated:YES];
+    }]];
     
-    [popover addAction:action1];
-    [popover addAction:action2];
-    [popover addAction:action3];
-    
-    [self presentViewController:popover animated:YES completion:nil];  
+    [self presentViewController:popover animated:YES completion:nil];
 }
 ```
 
