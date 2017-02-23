@@ -8,12 +8,7 @@
 
 
 #import "FFPopoverController.h"
-
-# define kArrowW 15 // 箭头宽度
-# define kArrowH 8 // 箭头高度
-# define kCellRowHeight 45
-# define kContent2Border 5 // 内容边框到屏幕边框的间距
-
+#import "FFPopoverConst.h"
 
 @interface FFPopoverController () <UITableViewDelegate, UITableViewDataSource>
 /**用来展示内容*/
@@ -30,8 +25,6 @@
 
 @implementation FFPopoverController
 
- static NSString * const popoverID = @"popoverCell";
-
 # pragma mark - 重要方法
 - (instancetype)initWithFromView:(UIView *)fromView {
     self = [super init];
@@ -47,7 +40,6 @@
             UIWindow *window = [UIApplication sharedApplication].keyWindow;
             self.fromViewRect = [fromView.superview convertRect:fromView.frame toView:window];
         }
-        
         
         // 3.设置初始值
         self.contentBackgroundColor = [UIColor whiteColor];
@@ -96,10 +88,10 @@
     
     // 3.2 设置内容的X
     if (viewSize.width - self.arrowView.center.x - kContent2Border  < contentViewW * 0.5) {
-        contentViewX = contentViewX - (contentViewW / 2 - (viewSize.width - self.arrowView.center.x - kContent2Border));
+        contentViewX = contentViewX - (contentViewW * 0.5 - (viewSize.width - self.arrowView.center.x - kContent2Border));
     }
     if (self.arrowView.center.x + kContent2Border < contentViewW * 0.5) {
-        contentViewX = contentViewX + (contentViewW / 2 - self.arrowView.center.x) + kContent2Border;
+        contentViewX = contentViewX + (contentViewW * 0.5 - self.arrowView.center.x) + kContent2Border;
     }
     self.contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
 

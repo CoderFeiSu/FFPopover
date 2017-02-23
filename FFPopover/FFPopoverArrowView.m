@@ -59,9 +59,6 @@
     }
     CGContextSetLineWidth(ctx, 1);
     CGContextFillPath(ctx);
-
-    
-   
 }
 
 

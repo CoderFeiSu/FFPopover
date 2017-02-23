@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06573A1F1E5EA3AE006D5D21 /* FFPopoverConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 06573A1E1E5EA3AE006D5D21 /* FFPopoverConst.m */; };
 		77A7FAC71D851E74005430D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FAC61D851E74005430D8 /* main.m */; };
 		77A7FACA1D851E74005430D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FAC91D851E74005430D8 /* AppDelegate.m */; };
 		77A7FACD1D851E74005430D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 77A7FACC1D851E74005430D8 /* ViewController.m */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06573A1D1E5EA3AE006D5D21 /* FFPopoverConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPopoverConst.h; sourceTree = "<group>"; };
+		06573A1E1E5EA3AE006D5D21 /* FFPopoverConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPopoverConst.m; sourceTree = "<group>"; };
 		77A7FAC21D851E73005430D8 /* FFPopoverExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FFPopoverExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A7FAC61D851E74005430D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		77A7FAC81D851E74005430D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				77A7FAF91D851F1B005430D8 /* FFPopover.h */,
+				06573A1D1E5EA3AE006D5D21 /* FFPopoverConst.h */,
+				06573A1E1E5EA3AE006D5D21 /* FFPopoverConst.m */,
 				77A7FAFA1D851F1B005430D8 /* FFPopoverAction.h */,
 				77A7FAFB1D851F1B005430D8 /* FFPopoverAction.m */,
 				77A7FAFC1D851F1B005430D8 /* FFPopoverArrowView.h */,
@@ -305,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				77A7FB051D851F1B005430D8 /* FFPopoverArrowView.m in Sources */,
+				06573A1F1E5EA3AE006D5D21 /* FFPopoverConst.m in Sources */,
 				77A7FACD1D851E74005430D8 /* ViewController.m in Sources */,
 				77A7FB081D851F1B005430D8 /* FFPopoverController.m in Sources */,
 				77A7FB041D851F1B005430D8 /* FFPopoverAction.m in Sources */,

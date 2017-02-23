@@ -78,8 +78,6 @@
     CGFloat titleViewH = self.bounds.size.height;
     CGFloat titleViewW = self.bounds.size.width - 3 * margin - iconViewW;
     self.titleView.frame = CGRectMake(titleViewX, titleViewY, titleViewW, titleViewH);
-    
-    
 }
 
 
