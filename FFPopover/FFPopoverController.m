@@ -32,8 +32,8 @@
     self = [super init];
     if (self) {
         
-        // 1.必须传入UIView，不然Xcode会崩溃
-        NSAssert([fromView isKindOfClass:[UIView class]], @"请传入UIView");
+        // 1.必须传入UIView类型
+        NSAssert([fromView isKindOfClass:[UIView class]], @"请传入UIView类型");
         
         // 2.设置透明和弹出的动画效果
         self.modalPresentationStyle = UIModalPresentationCustom; // UIModalPresentationCustom和UIModalPresentationOverFullScreen背景都可以为透明
@@ -56,6 +56,13 @@
 
 
 - (void)addAction:(FFPopoverAction *)action {
+    // 不能为空，并且必须为FFPopoverAction类型
+    if (![action isMemberOfClass:[FFPopoverAction class]]) {
+        NSException *excp = [NSException exceptionWithName:@"类型不对" reason:@"传入的值必须为FFPopoverAction类型" userInfo:nil];
+        [excp raise];
+        return;
+    }
+    
     [self.actions addObject:action];
 }
 

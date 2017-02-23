@@ -10,7 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 @interface FFPopoverAction : NSObject
 
 - (instancetype)initWithTitle:(NSString *)title image:(nullable UIImage *)image handler:(void (^)(FFPopoverAction *))handler;
@@ -21,9 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *title;
 @property (nullable, nonatomic, strong) UIImage *image;
 @property (nonatomic, copy) void (^handler)(FFPopoverAction *action);
+
 @end
-
-
 
 
 NS_ASSUME_NONNULL_END

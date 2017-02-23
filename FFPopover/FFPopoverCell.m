@@ -9,9 +9,6 @@
 #import "FFPopoverCell.h"
 #import "FFPopoverAction.h"
 
-# define margin 10
-
-
 @interface FFPopoverCell ()
 @property (nonatomic, weak) UIImageView *iconView;
 @property (nonatomic, weak) UILabel *titleView;
@@ -19,6 +16,7 @@
 
 @implementation FFPopoverCell
 
+static const NSInteger margin = 10;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
