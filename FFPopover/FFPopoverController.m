@@ -8,6 +8,8 @@
 
 
 #import "FFPopoverController.h"
+#import "FFPopoverCell.h"
+#import "FFPopoverArrowView.h"
 #import "FFPopoverConst.h"
 
 @interface FFPopoverController () <UITableViewDelegate, UITableViewDataSource>
@@ -30,18 +32,19 @@
     self = [super init];
     if (self) {
         
-        // 1.设置透明和弹出的动画效果
+        // 1.必须传入UIView，不然Xcode会崩溃
+        NSAssert([fromView isKindOfClass:[UIView class]], @"请传入UIView");
+        
+        // 2.设置透明和弹出的动画效果
         self.modalPresentationStyle = UIModalPresentationCustom; // UIModalPresentationCustom和UIModalPresentationOverFullScreen背景都可以为透明
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; // 弹出presented VC时场景切换动画的风格
         
-        // 2.计算fromView在keyWindow中的位置
-        if ([fromView isKindOfClass:[UIView class]]) {
-            
-            UIWindow *window = [UIApplication sharedApplication].keyWindow;
-            self.fromViewRect = [fromView.superview convertRect:fromView.frame toView:window];
-        }
+        // 3.计算fromView在keyWindow中的位置
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        self.fromViewRect = [fromView.superview convertRect:fromView.frame toView:window];
+
         
-        // 3.设置初始值
+        // 4.设置初始值
         self.contentBackgroundColor = [UIColor whiteColor];
         self.separatorLineColor = [UIColor lightGrayColor];
         self.alpha = 0.0;
@@ -144,9 +147,13 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 1.销毁控制器
+    [self dismissViewControllerAnimated:YES completion:nil];
+    // 2.执行action
     FFPopoverAction *action = self.actions[indexPath.row];
-    if (action.handler)  action.handler(action);
-    [self.contentView reloadData];
+    if (action.handler)  {
+        action.handler(action);
+    }
 }
 
 
@@ -199,6 +206,7 @@
     }
     return _actions;
 }
+
 
 @end
 

@@ -36,16 +36,12 @@
         [self.contentView addSubview:iconView];
         self.iconView = iconView;
         
-        // 文字
+        // 4.文字
         UILabel *titleView = [[UILabel alloc] init];
         titleView.font = [UIFont systemFontOfSize:15.0];
         [self.contentView addSubview:titleView];
         self.titleView = titleView;
-        
-        // 取消cell的选中
-        self.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        
+    
     }
     return self;
 }
@@ -57,7 +53,6 @@
     
     self.iconView.image = action.image;
     self.titleView.text = action.title;
-    
 }
 
 

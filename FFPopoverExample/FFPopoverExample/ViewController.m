@@ -20,23 +20,27 @@
     
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
-    popover.dismissCompletion = ^ {
-       NSLog(@"销毁了");
-    };
-    popover.presentCompletion = ^ {
-       NSLog(@"展现了");
-    };
-//    popover.contentBackgroundColor = [UIColor blueColor];
+
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"搜一搜" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-       
-    }] ];
-    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"看一看" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
-         action.title = @"看一看2";
-    }] ];
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor redColor];
+        vc.title = @"我要搜索";
+        [self.navigationController pushViewController:vc animated:YES];
+    }]];
     
-    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"抽一抽" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
-        action.title = @"看一看2";
-    }] ];
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"扫一扫" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor greenColor];
+        vc.title = @"我要扫描";
+        [self.navigationController pushViewController:vc animated:YES];
+    }]];
+    
+    [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"聊一聊" image:[UIImage imageNamed:@"chat"] handler:^(FFPopoverAction *action) {
+        UIViewController *vc = [[UIViewController alloc] init];
+        vc.view.backgroundColor = [UIColor blueColor];
+        vc.title = @"我要聊天";
+        [self.navigationController pushViewController:vc animated:YES];
+    }]];
     
     [self presentViewController:popover animated:YES completion:nil];
 }
@@ -47,7 +51,13 @@
 - (IBAction)rightTextClicked:(UITapGestureRecognizer *)sender {
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
-    popover.contentBackgroundColor = [UIColor blueColor];
+    popover.dismissCompletion = ^ {
+        NSLog(@"销毁了");
+    };
+    popover.presentCompletion = ^ {
+        NSLog(@"展现了");
+    };
+    
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"哈一哈" image:nil handler:^(FFPopoverAction *action) {
         
     }] ];
@@ -91,15 +101,15 @@
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:btn];
     
     FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
-        action.title = @"我变1";
+        
     }];
     
     FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-        action.title = @"我变2";
+    
     }];
     
     FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-        action.title = @"我变3";
+        
     }];
     
     [popover addAction:action1];

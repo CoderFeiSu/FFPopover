@@ -7,9 +7,8 @@
 //
 
 
+#import <UIKit/UIKit.h>
 #import "FFPopoverAction.h"
-#import "FFPopoverCell.h"
-#import "FFPopoverArrowView.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

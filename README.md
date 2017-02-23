@@ -33,7 +33,7 @@
 ```
 
 ## 效果图
-<img src="http://s11.sinaimg.cn/mw690/003uLCdEzy78T73HL1Eda&amp;690" width="280" height="497" name="image_operate_71751487430741898" id="image_operate_59231487430974390">
+<img src="http://s4.sinaimg.cn/bmiddle/003uLCdEzy790B9kdLd73&amp;690" width="280" height="497" name="image_operate_71751487430741898" id="image_operate_59231487430974390">
 
 ## 支持版本
 iOS7及以上
