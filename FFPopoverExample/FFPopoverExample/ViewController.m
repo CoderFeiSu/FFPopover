@@ -20,7 +20,6 @@
     
     
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:sender.view ];
-
     [popover addAction: [[FFPopoverAction alloc] initWithTitle:@"搜一搜" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
         UIViewController *vc = [[UIViewController alloc] init];
         vc.view.backgroundColor = [UIColor redColor];

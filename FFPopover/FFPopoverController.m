@@ -41,7 +41,7 @@
         
         // 3.计算fromView在keyWindow中的位置
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        self.fromViewRect = [fromView.superview convertRect:fromView.frame toView:window];
+        self.fromViewRect = [fromView convertRect:fromView.bounds toView:window];
 
         
         // 4.设置初始值
