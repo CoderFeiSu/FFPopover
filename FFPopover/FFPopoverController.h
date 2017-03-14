@@ -23,7 +23,7 @@ NS_CLASS_AVAILABLE_IOS(7_0) @interface FFPopoverController : UIViewController
 /** 蒙版的透明度，默认alpha是0.0，全透明 */
 @property (nonatomic, assign)  CGFloat alpha;
 /** 背景颜色，默认是whiteColor */
-@property (nonatomic, strong)  UIColor *contentBackgroundColor;
+@property (nonatomic, strong)  UIColor *fillColor;
 /** 内容尺寸，默认宽度是140 */
 @property (nonatomic, assign)  CGFloat contentWidth;
 /** 控制器将会销毁 */

@@ -45,7 +45,7 @@
 
         
         // 4.设置初始值
-        self.contentBackgroundColor = [UIColor whiteColor];
+        self.fillColor = [UIColor whiteColor];
         self.separatorLineColor = [UIColor lightGrayColor];
         self.alpha = 0.0;
         self.contentWidth = 140.0;
@@ -112,7 +112,7 @@
     self.contentView.backgroundColor = self.separatorLineColor;
     
     // 6.箭头的填充颜色
-    self.arrowView.fillColor = self.contentBackgroundColor;
+    self.arrowView.fillColor = self.fillColor;
     
 }
 
@@ -147,7 +147,7 @@
     FFPopoverCell *cell = (FFPopoverCell *)[tableView dequeueReusableCellWithIdentifier:popoverID forIndexPath:indexPath];
     FFPopoverAction *action = self.actions[indexPath.row];
     cell.action = action;
-    cell.backgroundColor = self.contentBackgroundColor;
+    cell.backgroundColor = self.fillColor;
  
     return cell;
 }
@@ -198,7 +198,7 @@
         contentView.showsVerticalScrollIndicator = NO;
         contentView.scrollEnabled  = NO;
         contentView.layer.cornerRadius  = 5.f;
-        contentView.layer.borderColor   = self.contentBackgroundColor.CGColor;
+        contentView.layer.borderColor   = self.fillColor.CGColor;
         contentView.layer.borderWidth   = 1.f;
         [self.view addSubview:contentView];
         _contentView = contentView;
