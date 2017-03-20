@@ -32,19 +32,22 @@
     self = [super init];
     if (self) {
         
-        // 1.必须传入UIView类型
+         // 1.判断当前线程是不是主线程
+        NSAssert([NSThread isMainThread], @"请在主线程中调用");
+        
+        // 2.必须传入UIView类型
         NSAssert([fromView isKindOfClass:[UIView class]], @"请传入UIView类型");
         
-        // 2.设置透明和弹出的动画效果
+        // 3.设置透明和弹出的动画效果
         self.modalPresentationStyle = UIModalPresentationCustom; // UIModalPresentationCustom和UIModalPresentationOverFullScreen背景都可以为透明
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve; // 弹出presented VC时场景切换动画的风格
         
-        // 3.计算fromView在keyWindow中的位置
+        // 4.计算fromView在keyWindow中的位置
         UIWindow *window = [UIApplication sharedApplication].keyWindow;
         self.fromViewRect = [fromView convertRect:fromView.bounds toView:window];
 
         
-        // 4.设置初始值
+        // 5.设置初始值
         self.fillColor = [UIColor whiteColor];
         self.separatorLineColor = [UIColor lightGrayColor];
         self.alpha = 0.0;
@@ -72,14 +75,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.contentView registerClass:[FFPopoverCell class] forCellReuseIdentifier:popoverID];
-}
-
-
-
-- (void)viewWillLayoutSubviews {
-    [super viewWillLayoutSubviews];
-    
     // 1.获取尺寸
     CGSize viewSize = self.view.frame.size;
     
@@ -104,7 +99,7 @@
         contentViewX = contentViewX + (contentViewW * 0.5 - self.arrowView.center.x) + kContent2Border;
     }
     self.contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
-
+    
     // 4.设置背景透明度
     self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:self.alpha];
     
@@ -113,6 +108,9 @@
     
     // 6.箭头的填充颜色
     self.arrowView.fillColor = self.fillColor;
+    
+    // 7.注册cell
+    [self.contentView registerClass:[FFPopoverCell class] forCellReuseIdentifier:popoverID];
     
 }
 
@@ -158,9 +156,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     // 2.执行action
     FFPopoverAction *action = self.actions[indexPath.row];
-    if (action.handler)  {
-        action.handler(action);
-    }
+    if (action.handler) action.handler(action);
 }
 
 

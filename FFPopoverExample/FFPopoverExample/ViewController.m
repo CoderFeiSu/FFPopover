@@ -100,11 +100,10 @@
     FFPopoverController *popover = [[FFPopoverController alloc] initWithFromView:btn];
     
     FFPopoverAction *action1 = [[FFPopoverAction alloc] initWithTitle:@"飞呀飞" image:[UIImage imageNamed:@"QRCode"] handler:^(FFPopoverAction *action) {
-        
     }];
     
     FFPopoverAction *action2 = [[FFPopoverAction alloc] initWithTitle:@"飞了飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
-    
+        
     }];
     
     FFPopoverAction *action3 = [[FFPopoverAction alloc] initWithTitle:@"飞不飞" image:[UIImage imageNamed:@"search"] handler:^(FFPopoverAction *action) {
@@ -116,6 +115,7 @@
     [popover addAction:action3];
     
     [self presentViewController:popover animated:YES completion:nil];
+
 }
 
 

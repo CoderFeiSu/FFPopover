@@ -51,6 +51,8 @@ static const NSInteger margin = 10;
     
     self.iconView.image = action.image;
     self.titleView.text = action.title;
+    
+    
 }
 
 
