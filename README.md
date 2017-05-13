@@ -3,6 +3,7 @@
 * 让你的菜单想上弹就上弹，想下弹就下弹
 
 ## 怎样使用
+* 通过CocoaPods安装：pod 'FFPopover'
 * 手动拖入FFPopover文件夹到项目中
 * 导入主文件：#import "FFPopover.h"
 * 示例代码:
