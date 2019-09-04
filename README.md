@@ -41,7 +41,7 @@
 ```
 
 ## 效果图
-<img src="http://s4.sinaimg.cn/bmiddle/003uLCdEzy790B9kdLd73&amp;690" width="280" height="497" name="image_operate_71751487430741898" id="image_operate_59231487430974390">
+![](https://github.com/CoderFeiSu/FFPopover/blob/master/display.gif)
 
 ## 支持版本
 iOS7及以上
